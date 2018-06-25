@@ -21,7 +21,6 @@ def draw(wafer):
             value_k=value[k]
             x_k=x[k]
             y_k=y[k]
-            print(x_k,y_k, value_k)
 
             # blue for values above the middle value, red for belows
             if (value_k-Middle)/Amplitude>=0:
@@ -29,14 +28,18 @@ def draw(wafer):
             else:
                 c = (1, 1+(value_k-Middle)/Amplitude, 1+(value_k-Middle)/Amplitude)
 
-            rect = patches.Rectangle((x_k,y_k), 0.9, 0.9, facecolor=c, edgecolor='k')
+            rect = patches.Rectangle((x_k,y_k), 0.90, 0.90, facecolor=c, edgecolor='k')
             ax.add_patch(rect)
 
     maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor='b', edgecolor='k')
+    half_maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor= (0.5,0.5,1), edgecolor='k')
     midPatch = patches.Rectangle((0, 0), 0, 0, facecolor='w', edgecolor='k')
+    half_minPatch = patches.Rectangle((0, 0), 0, 0, facecolor=(1, 0.5, 0.5), edgecolor='k')
     minPatch = patches.Rectangle((0, 0), 0, 0, facecolor='r', edgecolor='k')
 
-    plt.legend([maxPatch, midPatch, minPatch], [str(round(Maxi,4)), str(round(Middle,4)),str(round(Mini,4))], markerscale=100, frameon=False, fontsize=10)
+    plt.legend([maxPatch,half_maxPatch, midPatch, half_minPatch, minPatch],
+               [str(round(Maxi,3)), str(round((Maxi+ Middle)/2,3)), str(round(Middle,3)), str(round((Mini+ Middle)/2,3)), str(round(Mini,3))],
+               markerscale=100, frameon=False, fontsize=10)
 
     plt.xlim([-1, 23])
     plt.ylim([-1, 12])
