@@ -1,8 +1,9 @@
-import numpy as np
+'''Here are some function used to test the algorithm'''
 
 from db_extractor import blob2list
 
-def sum_spec(spec):
+# mean of the spectrum
+def mean_spec(spec):
 
     spec_extracted = blob2list(spec)
 
@@ -15,8 +16,7 @@ def sum_spec(spec):
     return sum(absp)/len(absp)
 
 
-
-
+# maximum value of the spectrum
 def max_spec(spec):
 
     spec_extracted = blob2list(spec)
@@ -30,6 +30,7 @@ def max_spec(spec):
     return max(absp)
 
 
+# median of the spectrum
 def med_spec(spec):
     spec_extracted = blob2list(spec)
 
@@ -41,9 +42,3 @@ def med_spec(spec):
     absp.sort()
 
     return absp[len(absp)//2]
-
-
-#db_path = 'sqlite:///C:\\Users\\cphnano\\paul lebaigue\\production_data\\db\\database.db'
-#spec = db_extrac(db_path,'G1_1_14_127')
-
-#print(sum_spec(spec))

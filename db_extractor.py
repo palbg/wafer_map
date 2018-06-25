@@ -41,20 +41,3 @@ def blob2list(blob):
         return None
 
     return np.fromstring(blob).tolist()
-
-
-
-#wafer = db_extrac(db_path,'G1_1_14_195')
-
-
-
-'''
-x_cell_extracted = wafer[0]
-y_cell_extracted = wafer[1]
-spec_cell_extracted = wafer[2]
-for k in range(len(x_cell_extracted)):
-    print(x_cell_extracted[k][0],y_cell_extracted[k][0])'''
-
-#print(wafer)
-# print(np.fromstring(wafer[2][5][0]).tolist())
-#print(blob2list(wafer[2][0][0]))

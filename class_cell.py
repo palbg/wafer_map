@@ -1,4 +1,4 @@
-'''definition of a class cell, containing the location and the value of the cells'''
+'''definition of a class wafer, containing the location and the value of the cells'''
 
 from db_extractor import blob2list
 

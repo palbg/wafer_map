@@ -17,12 +17,13 @@ def draw(wafer):
 
         for k in range(len(value)):
 
+            #takes values from the class 'wafer'
             value_k=value[k]
             x_k=x[k]
             y_k=y[k]
             print(x_k,y_k, value_k)
 
-            #blue for positive values, red for negatives
+            # blue for values above the middle value, red for belows
             if (value_k-Middle)/Amplitude>=0:
                 c = (1-(value_k-Middle)/Amplitude , 1-(value_k-Middle)/Amplitude, 1)
             else:
@@ -34,6 +35,7 @@ def draw(wafer):
     maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor='b', edgecolor='k')
     midPatch = patches.Rectangle((0, 0), 0, 0, facecolor='w', edgecolor='k')
     minPatch = patches.Rectangle((0, 0), 0, 0, facecolor='r', edgecolor='k')
+
     plt.legend([maxPatch, midPatch, minPatch], [str(round(Maxi,4)), str(round(Middle,4)),str(round(Mini,4))], markerscale=100, frameon=False, fontsize=10)
 
     plt.xlim([-1, 23])
