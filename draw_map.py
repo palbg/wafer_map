@@ -6,8 +6,9 @@ import matplotlib.patches as patches
 
 def draw(wafer):
 
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
+    fig = plt.figure(1)
+    fig.patch.set_facecolor('#E0F0E0')
+    ax = fig.add_subplot(121)
 
     for cell in wafer.cell_list:
         x,y = cell.x, cell.y
@@ -24,18 +25,18 @@ def draw(wafer):
 
             # blue for values above the middle value, red for belows
             if (value_k-Middle)/Amplitude>=0:
-                c = (1-(value_k-Middle)/Amplitude , 1-(value_k-Middle)/Amplitude, 1)
+                c = (1, 1-(value_k-Middle)/Amplitude , 1-(value_k-Middle)/Amplitude)
             else:
-                c = (1, 1+(value_k-Middle)/Amplitude, 1+(value_k-Middle)/Amplitude)
+                c = (1+(value_k-Middle)/Amplitude, 1+(value_k-Middle)/Amplitude, 1)
 
             rect = patches.Rectangle((x_k,y_k), 0.90, 0.90, facecolor=c, edgecolor='k')
             ax.add_patch(rect)
 
-    maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor='b', edgecolor='k')
-    half_maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor= (0.5,0.5,1), edgecolor='k')
+    maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor='r', edgecolor='k')
+    half_maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor=(1, 0.5, 0.5) , edgecolor='k')
     midPatch = patches.Rectangle((0, 0), 0, 0, facecolor='w', edgecolor='k')
-    half_minPatch = patches.Rectangle((0, 0), 0, 0, facecolor=(1, 0.5, 0.5), edgecolor='k')
-    minPatch = patches.Rectangle((0, 0), 0, 0, facecolor='r', edgecolor='k')
+    half_minPatch = patches.Rectangle((0, 0), 0, 0, facecolor=(0.5,0.5,1), edgecolor='k')
+    minPatch = patches.Rectangle((0, 0), 0, 0, facecolor='b', edgecolor='k')
 
     plt.legend([maxPatch,half_maxPatch, midPatch, half_minPatch, minPatch],
                [str(round(Maxi,3)), str(round((Maxi+ Middle)/2,3)), str(round(Middle,3)), str(round((Mini+ Middle)/2,3)), str(round(Mini,3))],
@@ -44,4 +45,3 @@ def draw(wafer):
     plt.xlim([-1, 23])
     plt.ylim([-1, 12])
     plt.axis('off')
-    plt.show()
