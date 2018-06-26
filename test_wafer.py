@@ -1,26 +1,20 @@
 import numpy as np
 from scipy.interpolate import griddata
 import matplotlib.pyplot as plt
+from db_extractor import db_extrac, blob2list
+from detect_peaks_gmrf import detect_peaks_valleys_gmrf
 
-'''points = [[1, 1],
-          [1, 2],
-          [2, 1],
-          [2, 2]]
 
-value=[0, 10, 2, 5]
+for k in range(10):
+    wafer_ID = 'G1_1_14_12'+str(k)
+    print(wafer_ID)
 
-grid = griddata(points, value, np.mgrid[1:2:10j, 1:2:10j], method='cubic')
-plt.imshow(grid.T, extent=(0, 1, 0, 1), origin='lower')
-plt.show()
-'''
+    db_path = 'sqlite:///C:\\Users\\cphnano\\paul lebaigue\\production_data\\db\\database.db'
+    wafer_extracted = db_extrac(db_path, wafer_ID)
+    spec_wlen = blob2list(wafer_extracted[2][0][0])
+    spec = spec_wlen[1:len(spec_wlen):2]
+    wlen = spec_wlen[0:-1:2]
 
-def func(x,y):
-    return x+y
-
-grid_x, grid_y = np.mgrid[0:1:10j, 0:1:10j]
-points = np.random.rand(5, 2)
-values = func(points[:,0], points[:,1])
-print(points, values)
-grid = griddata(points, values, (grid_x, grid_y), method='cubic')
-plt.imshow(grid.T, extent=(0, 1, 0, 1), origin='lower')
-plt.show()
+    detect_peaks_valleys_gmrf(spec)
+#plt.plot(wlen,spec)
+#plt.show()

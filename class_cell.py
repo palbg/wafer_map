@@ -13,12 +13,17 @@ class wafer:
         self.cell_list.append(self)
 
 
-    def add_cell(self, x, y, spec, spec_analyser):
+    def add_cell(self, x, y, spec_extracted, spec_analyser):
 
-        if blob2list(spec)!= None and x!=None and y!=None:
+        if blob2list(spec_extracted)!= None and x!=None and y!=None:
             self.x.append(x)
             self.y.append(y)
-            self.value.append(spec_analyser(spec))
+
+            spec_wlen = blob2list(spec_extracted)
+            spec=spec_wlen[1:len(spec_extracted):2]
+            wlen = spec_wlen[0:-1:2]
+
+            self.value.append(spec_analyser(spec,wlen))
 
 
     def amplitude(self):

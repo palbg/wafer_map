@@ -16,7 +16,6 @@ def draw_interpolation(wafer):
 
     points=[np.array(x),np.array(y)]
     points = np.transpose(points)
-    print((points), (values))
 
     (grid_x, grid_y)=np.mgrid[-0.5:23.5:200j, -0.5:12.5:100j]
 
