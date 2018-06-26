@@ -7,6 +7,7 @@ def draw_interpolation(wafer):
 
     fig = plt.figure(1)
     ax = fig.add_subplot(122)
+    #fig.set_figheight(500)
 
     for cell in wafer.cell_list:
         x,y = cell.x, cell.y
@@ -21,6 +22,6 @@ def draw_interpolation(wafer):
 
 
     plt.imshow(grid.T, extent=(0, 1, 0, 1), origin='lower', cmap=cm.bwr)
-    plt.title('Cubic')
+    plt.title('Cubic interpolation')
     plt.colorbar()
     plt.axis('off')

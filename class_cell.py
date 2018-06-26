@@ -15,14 +15,25 @@ class wafer:
 
     def add_cell(self, x, y, spec_extracted, spec_analyser):
 
-        if blob2list(spec_extracted)!= None and x!=None and y!=None:
-            self.x.append(x)
-            self.y.append(y)
-
+        if spec_extracted == None:
+            spec_wlen = None
+        else:
             spec_wlen = blob2list(spec_extracted)
-            spec=spec_wlen[1:len(spec_extracted):2]
+
+
+        if x!=None and y!=None and spec_wlen != None :
+
+            spec = spec_wlen[1:len(spec_extracted):2]
             wlen = spec_wlen[0:-1:2]
 
+        else:
+            spec = None
+            wlen = None
+
+        if spec_analyser(wlen, spec) != None:
+
+            self.x.append(x)
+            self.y.append(y)
             self.value.append(spec_analyser(wlen,spec)[0])
 
 

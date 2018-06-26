@@ -28,7 +28,7 @@ def draw(wafer):
                 c = (1, 1-(value_k-Middle)/Amplitude , 1-(value_k-Middle)/Amplitude)
             else:
                 c = (1+(value_k-Middle)/Amplitude, 1+(value_k-Middle)/Amplitude, 1)
-            print(c)
+
             rect = patches.Rectangle((x_k,y_k), 0.90, 0.90, facecolor=c, edgecolor='k')
             ax.add_patch(rect)
 
@@ -42,6 +42,7 @@ def draw(wafer):
                [str(round(Maxi,8)), str(round((Maxi+ Middle)/2,8)), str(round(Middle,8)), str(round((Mini+ Middle)/2,8)), str(round(Mini,8))],
                markerscale=100, frameon=False, fontsize=10)
 
+    plt.title('Real values')
     plt.xlim([-1, 23])
     plt.ylim([-1, 12])
     plt.axis('off')

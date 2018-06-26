@@ -27,6 +27,21 @@ def detect_peaks_valleys_gmrf(spectrum):
     idx = np.append(idx, np.size(spectrum)-1)
     idx = np.sort(idx)
 
-    return idx_v
+    return idx
 
+def detect_needed_valley(spectrum):
+    valleys = detect_peaks(spectrum, valley=True, mpd=15, mph=-0.4, threshold=0.0001, edge=None,
+                           #show=True,
+                           kpsh=True
+                           )
 
+    wlen_list = []
+    for v in valleys :
+        if 520 < v < 532:
+            wlen_list.append(v + 200)
+
+    if wlen_list == []:
+        return None
+
+    wlen_list.sort()
+    return wlen_list[0]
