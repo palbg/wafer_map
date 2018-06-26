@@ -8,7 +8,7 @@ from func_test_spec import mean_spec, max_spec, med_spec, std_dev
 from interpolation import draw_interpolation
 import matplotlib.pyplot as plt
 from detect_peaks_gmrf import detect_peaks_valleys_gmrf
-
+from _modules.spectrum_analysis import gmrf_mode_condition_thickness_air
 
 def color_wafer(wafer_ID,spec_analyser):
 
@@ -36,4 +36,4 @@ def color_wafer(wafer_ID,spec_analyser):
     plt.show()
 
 
-color_wafer('G1_1_14_',std_dev)
+color_wafer('G1_1_14_',gmrf_mode_condition_thickness_air)

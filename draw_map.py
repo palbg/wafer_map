@@ -7,7 +7,7 @@ import matplotlib.patches as patches
 def draw(wafer):
 
     fig = plt.figure(1)
-    fig.patch.set_facecolor('#E0F0E0')
+    fig.patch.set_facecolor('#F0FFF0')
     ax = fig.add_subplot(121)
 
     for cell in wafer.cell_list:
@@ -28,7 +28,7 @@ def draw(wafer):
                 c = (1, 1-(value_k-Middle)/Amplitude , 1-(value_k-Middle)/Amplitude)
             else:
                 c = (1+(value_k-Middle)/Amplitude, 1+(value_k-Middle)/Amplitude, 1)
-
+            print(c)
             rect = patches.Rectangle((x_k,y_k), 0.90, 0.90, facecolor=c, edgecolor='k')
             ax.add_patch(rect)
 
@@ -39,7 +39,7 @@ def draw(wafer):
     minPatch = patches.Rectangle((0, 0), 0, 0, facecolor='b', edgecolor='k')
 
     plt.legend([maxPatch,half_maxPatch, midPatch, half_minPatch, minPatch],
-               [str(round(Maxi,3)), str(round((Maxi+ Middle)/2,3)), str(round(Middle,3)), str(round((Mini+ Middle)/2,3)), str(round(Mini,3))],
+               [str(round(Maxi,8)), str(round((Maxi+ Middle)/2,8)), str(round(Middle,8)), str(round((Mini+ Middle)/2,8)), str(round(Mini,8))],
                markerscale=100, frameon=False, fontsize=10)
 
     plt.xlim([-1, 23])

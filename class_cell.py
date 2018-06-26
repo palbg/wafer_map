@@ -23,7 +23,7 @@ class wafer:
             spec=spec_wlen[1:len(spec_extracted):2]
             wlen = spec_wlen[0:-1:2]
 
-            self.value.append(spec_analyser(spec,wlen))
+            self.value.append(spec_analyser(wlen,spec)[0])
 
 
     def amplitude(self):

@@ -1,5 +1,3 @@
-from class_cell import *
-from db_extractor import db_extrac
 import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
 import numpy as np
