@@ -25,6 +25,7 @@ def color_wafer(wafer_ID,spec_analyser):
 
     for k in range(len(x_cell_extracted)):
 
+        #adding a cell in the class wafer
         Wafer.add_cell(x_cell_extracted[k][0],
                        y_cell_extracted[k][0],
                        spec_cell_extracted[k][0],

@@ -26,13 +26,12 @@ def db_extrac(db_path,wafer_ID):
     # querying the database
     x = session.query(Cuvette.impr_x).filter(Cuvette.int_id.contains(wafer_ID)).all()
     y = session.query(Cuvette.impr_y).filter(Cuvette.int_id.contains(wafer_ID)).all()
-    spec = session.query(Cuvette.spectrum_air_ri1).filter(Cuvette.int_id.contains(wafer_ID)).all()
-    wafer = x,y,spec
+    spec_wlen = session.query(Cuvette.spectrum_air_ri1).filter(Cuvette.int_id.contains(wafer_ID)).all()
 
     session.commit()
     session.close()
 
-    return(x,y,spec)
+    return(x,y,spec_wlen)
 
 
 

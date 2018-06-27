@@ -15,7 +15,7 @@ def max_spec(wlen, spec):
 
 # median of the spectrum
 def med_spec(wlen, spec):
-    spec.sort
+    spec.sort()
     return spec[len(spec)//2]
 
 

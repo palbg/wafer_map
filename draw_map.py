@@ -3,6 +3,7 @@ blue is the highest value while red is the lowest'''
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+from decimal import Decimal
 
 def draw(wafer):
 
@@ -32,6 +33,7 @@ def draw(wafer):
             rect = patches.Rectangle((x_k,y_k), 0.90, 0.90, facecolor=c, edgecolor='k')
             ax.add_patch(rect)
 
+    # diefinition of the legend
     maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor='r', edgecolor='k')
     half_maxPatch = patches.Rectangle((0, 0), 0, 0, facecolor=(1, 0.5, 0.5) , edgecolor='k')
     midPatch = patches.Rectangle((0, 0), 0, 0, facecolor='w', edgecolor='k')
@@ -39,8 +41,12 @@ def draw(wafer):
     minPatch = patches.Rectangle((0, 0), 0, 0, facecolor='b', edgecolor='k')
 
     plt.legend([maxPatch,half_maxPatch, midPatch, half_minPatch, minPatch],
-               [str(round(Maxi,8)), str(round((Maxi+ Middle)/2,8)), str(round(Middle,8)), str(round((Mini+ Middle)/2,8)), str(round(Mini,8))],
-               markerscale=100, frameon=False, fontsize=10)
+               [str(round(Decimal(Maxi),10)),
+                str(round(Decimal((Maxi+ Middle)/2),10)),
+                str(round(Decimal(Middle),10)),
+                str(round(Decimal(Mini+ Middle)/2,10)),
+                str(round(Decimal(Mini),10))],
+                markerscale=100, frameon=False, fontsize=10)
 
     plt.title('Real values')
     plt.xlim([-1, 23])

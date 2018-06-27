@@ -34,14 +34,17 @@ def detect_needed_valley(spectrum):
                            #show=True,
                            kpsh=True
                            )
+    # valley=True, mpd=15, mph=-0.4, threshold=0.0001, edge=None seem to be good to find th valley in [520,532] nm
 
     wlen_list = []
     for v in valleys :
+        #the needed valley seems to be always in [520,532] nm
         if 520 < v < 532:
-            wlen_list.append(v + 200)
+            wlen_list.append(v)
 
     if wlen_list == []:
         return None
 
+    # just to be sure the lowest value is taken
     wlen_list.sort()
     return wlen_list[0]

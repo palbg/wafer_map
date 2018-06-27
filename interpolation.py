@@ -16,10 +16,10 @@ def draw_interpolation(wafer):
     points=[np.array(x),np.array(y)]
     points = np.transpose(points)
 
+    # create the grid composed by points where the interpolation will be calculated
     (grid_x, grid_y)=np.mgrid[-0.5:23.5:200j, -0.5:12.5:100j]
 
     grid = griddata(points, values, (grid_x, grid_y), method='cubic')
-
 
     plt.imshow(grid.T, extent=(0, 1, 0, 1), origin='lower', cmap=cm.bwr)
     plt.title('Cubic interpolation')
